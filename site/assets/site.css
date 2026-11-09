@@ -1,5 +1,5 @@
 /* mortar.ch. BitsAndBricks colours and fonts, laid out like mason's web app: a terminal screen with a
-   prompt bar, numbered tabs and a status line. Fonts: Archivo and IBM Plex Mono (SIL OFL 1.1), served from here. */
+   prompt bar and a status line. Fonts: Archivo and IBM Plex Mono (SIL OFL 1.1), served from here. */
 @font-face { font-family: "Archivo"; font-style: normal; font-display: swap; font-weight: 100 900; font-stretch: 62% 125%; src: url(fonts/archivo-latin-standard-normal.woff2) format("woff2-variations"); }
 @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-display: swap; font-weight: 400; src: url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2"); }
 @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-display: swap; font-weight: 600; src: url(fonts/ibm-plex-mono-latin-600-normal.woff2) format("woff2"); }
@@ -28,7 +28,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-top: 90px; }
+html { scroll-padding-top: 50px; }
 body { margin: 0; background: var(--page); color: var(--text); font: 15px/1.65 var(--mono); -webkit-font-smoothing: antialiased; }
 a { color: var(--brick); text-underline-offset: .2em; }
 a:hover { color: var(--text); }
@@ -41,22 +41,17 @@ code { font-family: var(--mono); color: var(--text); }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; } html { scroll-behavior: auto; } }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
-/* The screen: prompt bar, tabs, the page, status line */
-.screen { min-height: 100vh; min-height: 100dvh; display: grid; grid-template-rows: auto auto 1fr auto; grid-template-columns: minmax(0, 1fr); }
+/* The screen: prompt bar, the page, status line */
+.screen { min-height: 100vh; min-height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: minmax(0, 1fr); }
 .top { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 12px; padding: 7px 16px;
   background: var(--bar); border-bottom: 1px solid var(--line); font-size: .85rem; white-space: nowrap; }
 .who b { color: var(--brick); font-weight: 600; }
 .theme { font: inherit; background: transparent; color: var(--text-2); border: 1px solid var(--line-2); padding: 2px 9px; cursor: pointer; }
 .theme:hover { border-color: var(--brick); color: var(--brick); }
 .k { color: var(--brick); margin-right: 6px; }
-.tabs { position: sticky; top: 38px; z-index: 2; display: flex; gap: 2px; padding: 0 10px; background: var(--bar);
-  border-bottom: 1px solid var(--line); overflow-x: auto; font-size: .85rem; }
-.tabs a { padding: 7px 10px; color: var(--text-3); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
-.tabs a:hover, .tabs a.on { color: var(--text); border-bottom-color: var(--brick); }
 
 main { width: min(820px, 100%); margin: 0 auto; padding: 0 16px 40px; }
 main > section { padding: 36px 0 8px; }
-main > section:last-child { min-height: calc(100vh - 150px); min-height: calc(100dvh - 150px); }
 main > section + section { border-top: 1px dashed var(--line-2); margin-top: 28px; }
 main p { margin: 0 0 14px; color: var(--text-2); max-width: 68ch; }
 
