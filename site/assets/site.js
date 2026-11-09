@@ -19,14 +19,21 @@
     if (n >= 1 && n <= tabs.length) tabs[n - 1].click();
   });
 
-  // Underline the tab of the section in view.
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        tabs.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id); });
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    document.querySelectorAll("main > section").forEach(function (s) { io.observe(s); });
+  // Underline the tab of the section in view: the last one whose top is in the upper third of the window, or the
+  // last section once the page is scrolled to the bottom. A click marks its tab straight away.
+  var sections = tabs.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  function mark(i) { tabs.forEach(function (a, j) { a.classList.toggle("on", j === i); }); }
+  function update() {
+    var bar = Math.max(document.querySelector(".tabs").getBoundingClientRect().bottom + 40, innerHeight / 3), i = 0;
+    sections.forEach(function (s, j) { if (s && s.getBoundingClientRect().top <= bar) i = j; });
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) i = sections.length - 1;
+    mark(i);
   }
+  tabs.forEach(function (a, j) { a.addEventListener("click", function () { mark(j); }); });
+  var ticking = false;
+  addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); }
+  }, { passive: true });
+  addEventListener("resize", update);
+  update();
 })();

@@ -56,6 +56,7 @@ code { font-family: var(--mono); color: var(--text); }
 
 main { width: min(820px, 100%); margin: 0 auto; padding: 0 16px 40px; }
 main > section { padding: 36px 0 8px; }
+main > section:last-child { min-height: calc(100vh - 150px); min-height: calc(100dvh - 150px); }
 main > section + section { border-top: 1px dashed var(--line-2); margin-top: 28px; }
 main p { margin: 0 0 14px; color: var(--text-2); max-width: 68ch; }
 
