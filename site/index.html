@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mortar.ch</title>
+<meta name="description" content="mortar.ch: the tools that hold the bricks together. Home of mason.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<div class="screen">
+  <header class="top">
+    <span class="who"><b>guest@mortar</b> <span class="dim">:~$</span></span>
+    <span class="dim cmd">ls /tools</span>
+    <span class="spacer"></span>
+    <button type="button" class="theme" id="theme" title="Switch light and dark (t)"><span class="k">t</span> theme</button>
+  </header>
+
+  <nav class="tabs" aria-label="Sections">
+    <a href="#about"><span class="k">1</span>about</a>
+    <a href="#tools"><span class="k">2</span>tools</a>
+    <a href="#name"><span class="k">3</span>the name</a>
+  </nav>
+
+  <main>
+    <section id="about" class="motd">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" class="m-bg"/><rect x="10" y="15" width="20" height="12" rx="1.5" class="m-b"/><rect x="34" y="15" width="20" height="12" rx="1.5" class="m-b"/><rect x="10" y="30" width="44" height="4" rx="1" class="m-j"/><rect x="10" y="37" width="9" height="12" rx="1.5" class="m-b"/><rect x="22" y="37" width="20" height="12" rx="1.5" class="m-b"/><rect x="45" y="37" width="9" height="12" rx="1.5" class="m-b"/></svg>
+      <p class="prompt"><b>$</b> cat /etc/motd</p>
+      <h1>mortar<span>.</span>ch</h1>
+      <p class="lede">The tools that hold the bricks together.<span class="cursor" aria-hidden="true"></span></p>
+      <p>mortar.ch is home to the tooling behind <a href="https://bitsandbricks.ch">BitsAndBricks</a>: the things that keep a pile of repositories in line, so the projects themselves can stay small. For now that is one tool, <a href="#tools">mason</a>.</p>
+    </section>
+
+    <section id="tools" aria-labelledby="tools-h">
+      <h2 id="tools-h" class="prompt"><b>$</b> ls -l /tools</h2>
+
+      <table class="table">
+        <thead><tr><th scope="col">tool</th><th scope="col">what it does</th><th scope="col">where</th></tr></thead>
+        <tbody>
+          <tr class="sel">
+            <td class="name">mason</td>
+            <td>Looks after many GitHub and GitLab repositories at once.</td>
+            <td><a href="https://mason.mortar.ch">mason.mortar.ch</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="detail">
+        <h3>mason</h3>
+        <p>One <code>mason</code> command for every repo across your orgs and user accounts: status, pull requests, merges, workflow runs and approvals, releases, security alerts, stats, and drift checks against a shared set of defaults kept in a repo you choose.</p>
+        <dl class="kv">
+          <dt>cli</dt><dd><code>mason status</code>, <code>mason prs</code>, <code>mason merge</code>, <code>mason doctor --fix</code>, …</dd>
+          <dt>tui</dt><dd><code>mason tui</code>: every view full screen, keyboard only, htop-style F-keys</dd>
+          <dt>web</dt><dd><code>mason serve</code>: the same in a browser, signed in with your own GitHub or GitLab account. Runs at <a href="https://mason.mortar.ch">mason.mortar.ch</a></dd>
+          <dt>source</dt><dd><a href="https://github.com/bitsandbricks-ch/mason-cli">github.com/bitsandbricks-ch/mason-cli</a> · MIT</dd>
+        </dl>
+        <p class="prompt"><b>$</b> install</p>
+<pre class="code"><code>pipx install "mason-cli[tui,server] @ git+https://github.com/bitsandbricks-ch/mason-cli"
+gh auth login
+mason init your-org/your-defaults</code></pre>
+      </div>
+    </section>
+
+    <section id="name" aria-labelledby="name-h">
+      <h2 id="name-h" class="prompt"><b>$</b> man mortar</h2>
+      <dl class="man">
+        <dt>NAME</dt>
+        <dd><b>mortar</b> — the paste between the bricks that holds a wall together</dd>
+        <dt>DESCRIPTION</dt>
+        <dd>BitsAndBricks makes the bricks. Mortar is what goes between them. A mason is the one who lays bricks in mortar, so the first tool here is called mason. The project started out under the name Mortar itself; the tool became mason, and the name moved up to the domain.</dd>
+        <dt>SEE ALSO</dt>
+        <dd><a href="https://bitsandbricks.ch">bitsandbricks.ch</a>, <a href="https://github.com/bitsandbricks-ch">github.com/bitsandbricks-ch</a></dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span class="status"><span class="led" aria-hidden="true"></span>ready</span>
+    <span class="spacer"></span>
+    <a href="https://bitsandbricks.ch" class="powered">
+      <span>Powered by</span>
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="12" width="17" height="10" rx="1.4" class="b"/><rect x="24.5" y="12" width="17" height="10" rx="1.4" class="b"/><rect x="44" y="12" width="17" height="10" rx="1.4" class="b"/><rect x="5" y="24.5" width="7.5" height="10" rx="1.4" class="b"/><rect x="15" y="24.5" width="17" height="10" rx="1.4" class="g"/><path d="M19 26.7h9v4.4h-2.4v1.4h-4.2v-1.4H19z" class="p"/><rect x="34.5" y="24.5" width="17" height="10" rx="1.4" class="b"/><rect x="54" y="24.5" width="7" height="10" rx="1.4" class="b"/><rect x="5" y="37" width="17" height="10" rx="1.4" class="b"/><rect x="24.5" y="37" width="17" height="10" rx="1.4" class="b"/><rect x="44" y="37" width="17" height="10" rx="1.4" class="b"/></svg>
+      <strong>Bits<b>And</b>Bricks</strong>
+    </a>
+    <span class="keys" aria-hidden="true"><b>1-3</b> section <b>t</b> theme</span>
+  </footer>
+</div>
+</body>
+</html>
