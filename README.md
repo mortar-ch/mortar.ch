@@ -8,8 +8,7 @@ For now it lists one tool, [mason](https://github.com/bitsandbricks-ch/mason-cli
 (`.github/workflows/pages.yml`). In the repository settings, set Pages > Source to "GitHub Actions".
 The custom domain comes from `site/CNAME`.
 
-The look follows mason's web app (prompt bar, numbered tabs, status line; keys `1`-`3` jump to a section,
-`t` switches light and dark) in the colours and fonts of [bitsandbricks.ch](https://bitsandbricks.ch).
+The look follows mason's web app (prompt bar and status line; `t` switches light and dark) in the colours and fonts of [bitsandbricks.ch](https://bitsandbricks.ch).
 No cookies, no tracking, no outside requests. Fonts: Archivo and IBM Plex Mono (SIL OFL 1.1), licences in
 `site/assets/fonts/`.
 
