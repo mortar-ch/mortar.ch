@@ -98,6 +98,8 @@ pre.code { margin: 0; padding: 12px 14px; background: var(--code); border-left: 
 .status { display: inline-flex; align-items: center; gap: 8px; }
 .led { width: 8px; height: 8px; border-radius: 1px; background: var(--core); }
 .keys b { color: var(--brick); font-weight: 400; }
+.coffee { color: var(--text-3); text-decoration: none; }
+.coffee:hover { color: var(--brick); }
 .powered { display: inline-flex; align-items: center; gap: 8px; color: var(--text-3); text-decoration: none; }
 .powered svg { width: 18px; height: 18px; }
 .powered .b { fill: var(--mark-brick); } .powered .g { fill: var(--mark-green); } .powered .p { fill: var(--bar); }
