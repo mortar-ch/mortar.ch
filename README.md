@@ -1,5 +1,7 @@
 # mortar.ch
 
+[![Pages](https://github.com/mortar-ch/mortar.ch/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/mortar-ch/mortar.ch/actions/workflows/pages.yml?query=branch%3Amain) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-bitsandbricks-ffdd00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/bitsandbricks)
+
 The landing page for [mortar.ch](https://mortar.ch): the tools that hold the bricks together.
 For now it lists one tool, [mason](https://github.com/bitsandbricks-ch/mason-cli), whose web app runs at
 [mason.mortar.ch](https://mason.mortar.ch).
