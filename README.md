@@ -17,3 +17,7 @@ No cookies, no tracking, no outside requests. Fonts: Archivo and IBM Plex Mono (
 To add a tool, add a row to the table in `site/index.html` and a detail box under it.
 
 To look at it locally: `python3 -m http.server -d site` and open http://localhost:8000.
+
+Before a push, run `python3 tools/check.py`: it checks that local links, assets and `#anchors`
+exist and that nothing loads from another site. CI runs it on every pull request
+(`.github/workflows/check.yml`) and before each deploy.
