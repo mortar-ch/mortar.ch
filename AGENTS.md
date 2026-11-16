@@ -12,6 +12,7 @@ The landing page for mortar.ch, the tools that hold the bricks together (for now
 
 1. **Branch:** work on your own branch, never push to `main`. One topic per branch and pull request.
 2. **Before you push**, run what CI runs and make it pass locally:
+   - `python3 -m unittest discover -s tests` (tests for the site check)
    - `python3 tools/check.py` (links, assets, anchors, no outside requests, CSP, no inline scripts)
    - `python3 -m http.server -d site`, then open http://localhost:8000
 3. **Pull request:** open it as a **draft** and fill in the template
