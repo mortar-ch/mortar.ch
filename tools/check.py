@@ -1,6 +1,7 @@
 """Checks site/ before it is published: local links and assets exist, #anchors exist, no outside
 requests (scripts, styles, fonts, images load from this site only), one <h1>, lang and <title>,
-unique ids and alt text on images. Python standard library only.
+unique ids, alt text on images, no inline scripts, and a Content-Security-Policy that names no
+other site. Python standard library only.
 
     python3 tools/check.py
 """
@@ -19,10 +20,15 @@ class Page(HTMLParser):
     def __init__(self):
         super().__init__()
         self.refs, self.ids, self.h1, self.lang, self.title, self.no_alt = [], [], 0, None, False, 0
+        self.csp, self.inline_script = None, False
         self._in_title = False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag == "meta" and (a.get("http-equiv") or "").lower() == "content-security-policy":
+            self.csp = a.get("content") or ""
+        if tag == "script" and not a.get("src"):
+            self.inline_script = True
         if tag == "html":
             self.lang = a.get("lang")
         if tag == "h1":
@@ -58,6 +64,12 @@ def check(path):
         errors.append("no <title>")
     if page.h1 != 1:
         errors.append(f"{page.h1} <h1> elements, want 1")
+    if page.csp is None:
+        errors.append("no Content-Security-Policy meta")
+    elif re.search(r"https?://|(^|\s)(\*|https?:)(?=[\s;]|$)|'unsafe-(inline|eval)'", page.csp):
+        errors.append("CSP lets in another site, a wildcard, or inline/eval code")
+    if page.inline_script:
+        errors.append("inline <script> (put it in assets/)")
     if page.no_alt:
         errors.append(f"{page.no_alt} <img> without alt")
     dupes = sorted({i for i in page.ids if page.ids.count(i) > 1})
