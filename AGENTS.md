@@ -21,11 +21,14 @@ Run what CI runs (`.github/workflows/check.yml`) and make it pass:
 
 ## Differs from the handbook
 
+- **No pre-commit hooks yet**: there is no `.pre-commit-config.yaml` ([decision 0010](https://github.com/bitsandbricks-ch/handbook/blob/main/decisions/0010-pre-commit.md)), so skip `pre-commit run --all-files` until it lands.
 - **Plain HTML, not Astro.** The static-site profile names Astro. This site is one hand-written
   page in `site/` with no build step, so Astro would only add a build and dependencies.
 
 ## Repo-specific rules
 
+- Work from an issue: open one if there is none, comment when you start and when blocked, link it from the PR.
+- Commits and PR titles follow Conventional Commits, with these scopes: `site`, `tools`, `ci`.
 - **Publishing:** every merge to `main` that touches `site/` deploys the page. Nothing goes live except through a merged pull request.
 - **No releases:** the page has no version and no changelog
   ([decision 0012](https://github.com/bitsandbricks-ch/handbook/blob/main/decisions/0012-no-changelog-without-releases.md)).
